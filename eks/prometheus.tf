@@ -24,9 +24,20 @@ resource "helm_release" "prometheus-helm" {
   }
 
   set {
+    name  = "grafana.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-scheme"
+    value = "internet-facing"
+  }
+
+  set {
     name  = "prometheus.service.type"
     value = "LoadBalancer"
   }
+
+  set {
+  name  = "prometheus.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-scheme"
+  value = "internet-facing"
+}
+
 
   depends_on = [helm_release.argocd]
 }

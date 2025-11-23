@@ -27,6 +27,13 @@ resource "aws_iam_role_policy_attachment" "alb_attach" {
   policy_arn = aws_iam_policy.lb-controller-policy.arn
 }
 
+resource "kubernetes_namespace" "aws_lb_ns" {
+  metadata {
+    name = "aws-loadbalancer-controller"
+  }
+}
+
+
 # Create the service account
 resource "kubernetes_service_account" "lb_controller" {
   metadata {
@@ -39,5 +46,6 @@ resource "kubernetes_service_account" "lb_controller" {
 
   depends_on = [
     aws_iam_role_policy_attachment.alb_attach,
+    kubernetes_namespace.aws_lb_ns
   ]
 }
