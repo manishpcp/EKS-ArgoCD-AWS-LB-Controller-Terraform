@@ -37,7 +37,7 @@ Before you begin, ensure you have the following installed:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-repo/eks-terraform-project.git
+   git clone https://github.com/manishpcp/eks-terraform-project.git
    cd eks-terraform-project
 
 2. **Deploy VPC and EC2: Run the following commands to deploy the VPC and an EC2 instance**:
